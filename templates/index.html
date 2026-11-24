@@ -1,71 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lavender Welcome</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Simple Greeting App</title>
 </head>
 <body>
 
-    <div class="background-shape shape-one"></div>
-    <div class="background-shape shape-two"></div>
+    <h2>Simple Greeting App</h2>
 
-    <main class="container">
-        <div class="card">
+    <form method="POST">
+        <label for="name">Enter Your Name:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Submit</button>
+    </form>
 
-            <div class="icon">✿</div>
-
-            <p class="subtitle">A LITTLE SPACE FOR YOU</p>
-            <h1>Welcome!</h1>
-
-            <p class="description">
-                Let's make this moment a little more special.
-                Enter your name below.
-            </p>
-
-            <form method="POST">
-                <label for="name">Your Name</label>
-
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Type your name here..."
-                    value="{{ name }}"
-                >
-
-                <button type="submit" class="submit-btn">
-                    Say Hello <span>→</span>
-                </button>
-            </form>
-
-            <form method="GET" class="clear-form">
-                <button type="submit" class="clear-btn">
-                    Clear
-                </button>
-            </form>
-
-            {% if error %}
-                <div class="message error">
-                    {{ error }}
-                </div>
-            {% endif %}
-
-            {% if name %}
-                <div class="message success">
-                    <span>✧</span>
-                    <h2>Hello, {{ name }}!</h2>
-                    <p>It's lovely to have you here.</p>
-                </div>
-            {% endif %}
-
-            <div class="footer">
-                MADE WITH ♡ AND FLASK
-            </div>
-
-        </div>
-    </main>
+    {% if name %}
+        <p>Hello, {{ name }}!</p>
+    {% endif %}
 
 </body>
 </html>
